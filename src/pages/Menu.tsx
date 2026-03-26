@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const MENU_CATEGORIES = [
   { id: 'coffee', name: 'Coffee' },
@@ -149,10 +150,14 @@ export default function Menu() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
         {MENU_CATEGORIES.map((category) => (
-          <div 
+          <motion.div 
             key={category.id} 
             ref={el => { categoryRefs.current[category.id] = el }}
             className="scroll-mt-32"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-4 mb-8">
               <h2 className="font-serif text-3xl font-bold text-brand-dark">{category.name}</h2>
@@ -161,7 +166,12 @@ export default function Menu() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
               {MENU_ITEMS[category.id as keyof typeof MENU_ITEMS]?.map((item, index) => (
-                <div key={index} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start border border-brand-beige/30 group">
+                <motion.div 
+                  key={index} 
+                  className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow flex gap-4 items-start border border-brand-beige/30 group"
+                  whileHover={{ y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-brand-beige relative">
                     <img 
                       src={item.image} 
@@ -177,10 +187,10 @@ export default function Menu() {
                     </div>
                     <p className="text-brand-dark/70 text-sm leading-relaxed line-clamp-2">{item.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         ))}
 
         {/* Note */}

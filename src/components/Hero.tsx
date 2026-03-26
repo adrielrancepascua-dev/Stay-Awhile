@@ -1,31 +1,57 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
     <div className="relative bg-brand-beige h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image Overlay */}
-      <div className="absolute inset-0 z-0">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 z-0"
+      >
         <img 
           src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
           alt="Stay Awhile Café Interior" 
           className="w-full h-full object-cover opacity-60"
         />
         <div className="absolute inset-0 bg-brand-dark/30 mix-blend-multiply" />
-      </div>
+      </motion.div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <h1 className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
+        <motion.h1 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight"
+        >
           Your cozy corner in Dagupan
-        </h1>
-        <p className="font-sans text-xl md:text-2xl text-brand-beige mb-4 font-light drop-shadow-md">
+        </motion.h1>
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="font-sans text-xl md:text-2xl text-brand-beige mb-4 font-light drop-shadow-md"
+        >
           Coffee, cakes, and moments worth staying for.
-        </p>
-        <p className="font-sans text-lg text-brand-beige/90 mb-10 drop-shadow-md font-medium tracking-wide">
+        </motion.p>
+        <motion.p 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="font-sans text-lg text-brand-beige/90 mb-10 drop-shadow-md font-medium tracking-wide"
+        >
           Open daily 9 AM – 10 PM • Coastway Complex, Arellano St.
-        </p>
+        </motion.p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+        >
           <Link 
             to="/menu" 
             className="group bg-brand-brown text-white px-8 py-3 rounded-full hover:bg-brand-dark transition-all duration-300 font-medium flex items-center gap-2 transform hover:-translate-y-1 shadow-lg"
@@ -47,7 +73,7 @@ export default function Hero() {
           >
             Visit Us
           </Link>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

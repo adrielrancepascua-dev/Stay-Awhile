@@ -178,6 +178,11 @@ export default function Menu() {
                       alt={item.name} 
                       loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=400&q=80';
+                        target.onerror = null;
+                      }}
                     />
                   </div>
                   <div className="flex-grow min-w-0">

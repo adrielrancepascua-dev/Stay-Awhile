@@ -10,12 +10,17 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 bg-brand-dark"
       >
         <img 
           src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
           alt="Stay Awhile Café Interior" 
           className="w-full h-full object-cover opacity-60"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1920&q=80';
+            target.onerror = null;
+          }}
         />
         <div className="absolute inset-0 bg-brand-dark/30 mix-blend-multiply" />
       </motion.div>
